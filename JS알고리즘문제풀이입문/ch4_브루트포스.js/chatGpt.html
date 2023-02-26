@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>누적 덧셈 페이지</title>
+    <!-- Google Fonts - Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design Lite JavaScript -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">누적 덧셈 페이지</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="number-input">
+              <i class="material-icons">add</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="number" id="number-input">
+              <label class="mdl-textfield__label" for="number-input">숫자 입력</label>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">누적 덧셈 페이지</span>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col">
+            <div class="mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">누적 결과</h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <h1 id="counter" class="mdl-typography--display-2">0</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      const counter = document.getElementById('counter');
+      const numberInput = document.getElementById('number-input');
+
+      let sum = 0;
+      counter.textContent = sum;
+
+      numberInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          addNumber();
+        }
+      });
+
+      function addNumber() {
+        const number = parseInt(numberInput.value);
+        if (isNaN(number)) {
+          alert('잘못된 입력입니다.');
+        } else {
+          sum += number;
+          counter.textContent = sum;
+          numberInput.value = '';
+        }
+      }
+    </script>
+  </body>
+</html>
