@@ -4,7 +4,9 @@ function solution(n) {
   function DFS(v) {
     if (v === n + 1) {
       let tmp = [];
-      for (let i = 1; i <= n; i++) if (check[i]) tmp.push(i);
+      for (let i = 1; i <= n; i++) {
+        if (check[i]) tmp.push(i);
+      }
       if (tmp.length >= 1) {
         ans.push(tmp.join(" "));
       }
