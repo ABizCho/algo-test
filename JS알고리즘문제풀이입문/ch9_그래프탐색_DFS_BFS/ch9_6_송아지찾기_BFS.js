@@ -2,28 +2,27 @@
 const input = "8 3";
 const [N, E] = input.split(" ").map((v) => Number(v));
 
-// SOL 1 )	dist배열 기반 ans
-function solution(S, E) {
-  let ans = 0;
-  let check = Array.from({ length: 10001 }, () => 0);
-  let dist = Array.from({ length: 10001 }, () => 0);
-  let queue = [];
-  queue.push(S);
-  check[S] = 1;
-  dist[S] = 0;
+// // SOL 1 )	dist배열 기반 ans
+function solution(s, e) {
+  const queue = [s];
+  const visited = Array.from({ length: 10001 }, () => 0);
+  const dist = Array.from({ length: 10001 }, () => 0);
+  visited[s] = 1;
+  dist[s] = 0;
   while (queue.length) {
-    let x = queue.shift();
-    for (let nx of [x - 1, x + 1, x + 5]) {
-      if (nx === E) return dist[x] + 1;
-      if (nx > 0 && nx <= 10000 && check[nx] === 0) {
-        check[nx] = 1;
+    let curX = queue.shift();
+
+    for (let nx of [curX - 1, curX + 1, curX + 5]) {
+      if (nx === e) {
+        return dist[curX] + 1;
+      }
+      if (!visited[nx] && nx < 10001 && nx > 0) {
+        visited[nx] = 1;
         queue.push(nx);
-        dist[nx] = dist[x] + 1;
+        dist[nx] = dist[curX] + 1;
       }
     }
   }
-
-  return ans;
 }
 
 // SOL 2 ) LEVEL 기반 ans
@@ -51,7 +50,5 @@ function solution(s, e) {
   }
   return answer;
 }
-
-console.log(solution(5, 14));
 
 console.log(solution(N, E));
