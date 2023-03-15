@@ -12,18 +12,18 @@ function solution(str) {
   return !stack.length ? ans : "NO";
 }
 
-// // sol2
-// function solution(str) {
-//   const ans = "YES";
-//   stack = [];
-//   for (let x of str) {
-//     if (x === "(") stack.push(x);
-//     else {
-//       if (stack.length === 0) return "NO";
-//       stack.pop();
-//     }
-//   }
-//   if (stack.length > 0) return "NO";
-//   return ans;
-// }
+// sol2
+function solution(str) {
+  const ans = "YES";
+  stack = [];
+  for (let x of str) {
+    if (x === "(") stack.push(x);
+    else {
+      if (stack.length === 0) return "NO";
+      stack.pop();
+    }
+  }
+  if (stack.length > 0) return "NO";
+  return ans;
+}
 console.log(solution(input));
