@@ -1,36 +1,36 @@
 // sol 1)
-// function solution(number, k) {
-//   let ans = Number.MIN_SAFE_INTEGER;
-//   const arr = number.split("").map((v) => Number(v));
-//   const N = arr.length - k;
+function solution(number, k) {
+  let ans = Number.MIN_SAFE_INTEGER;
+  const arr = number.split("").map((v) => Number(v));
+  const N = arr.length - k;
 
-//   const tmp = [];
-//   const visited = Array.from({ length: arr.length }, () => 0);
+  const tmp = [];
+  const visited = Array.from({ length: arr.length }, () => 0);
 
-//   function DFS(L, I) {
-//     if (tmp.length === N) {
-//       console.log(tmp.join(""));
-//       ans = Math.max(ans, Number(tmp.join("")));
-//     }
+  function DFS(L, I) {
+    if (tmp.length === N) {
+      console.log(tmp.join(""));
+      ans = Math.max(ans, Number(tmp.join("")));
+    }
 
-// 	else {
-//       for (let i = I; i < arr.length; i++) {
-//         if (!visited[i]) {
-//           visited[i] = 1;
-//           tmp.push(arr[i]);
-//           DFS(L + 1, I + 1);
-//           tmp.pop();
-// 		  DFS
-//           visited[i] = 0;
-//         }
-//       }
-//     }
+	else {
+      for (let i = I; i < arr.length; i++) {
+        if (!visited[i]) {
+          visited[i] = 1;
+          tmp.push(arr[i]);
+          DFS(L + 1, I + 1);
+          tmp.pop();
+		  DFS
+          visited[i] = 0;
+        }
+      }
+    }
 
-//   }
+  }
 
-//   DFS(1, 0);
-//   return ans;
-// }
+  DFS(1, 0);
+  return ans;
+}
 
 // 그리디
 // number: 문자열 형식의 숫자

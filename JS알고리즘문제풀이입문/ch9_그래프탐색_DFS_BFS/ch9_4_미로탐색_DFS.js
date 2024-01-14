@@ -93,6 +93,7 @@ function solution(board) {
     console.log("END OF DFS");
   }
   visited[0][0] = 1;
+  
   DFS(0, 0);
   return ans;
 }
